@@ -1,4 +1,44 @@
 *{
     padding: 0;
     margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+.App{
+    display: flex;
+    width: 100%;
+}
+.MainLeft-Container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    background-color: #06141D;
+    text-align: center;
+    font-size: 2rem;
+    height:100vh;
+}
+.MainLeft-ContainerBody{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 25%;
+}
+.MainLeft-Container img{
+    width: 35rem;
+    margin: 0% auto;
+}
+.MainLeft-Container p{
+    font-size: 3rem;
+    font-weight: 600;
+    width: 70%;
+    margin: 0% auto;
+    color: white;
+}
+.MainRight-Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+    margin: 0% auto;
+    background-color: rgb(255, 255, 255);
 }
