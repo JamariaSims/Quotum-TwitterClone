@@ -5,16 +5,45 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Main Feed</title>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+			integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+			crossorigin="anonymous" />
 		<link rel="stylesheet" href="MainFeed.css" />
 	</head>
 	<body>
-		<section class="LeftContainer">
+		<img id="Logo" src="../Assets/ConnectX-Logo_Only.png" />
+		<nav class="Header_NavigationBar">
+			<input id="SearchBar" type="text" placeholder="#Search" />
+			<section class="Header_NavigationBar-Center">
+				<button type="button" class="btn btn-default">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					Home
+				</button>
+				<button type="button" class="btn btn-default">
+					<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+					Inbox
+				</button>
+				<button type="button" class="btn btn-default">
+					<span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+					Notifications
+				</button>
+			</section>
+
+			<button
+				class="btn btn-default dropdown-toggle"
+				type="button"
+				aria-haspopup="true"
+				aria-expanded="true">
+				Jamaria Sims
+				<span class="caret"></span>
+			</button>
+		</nav>
+		<section class="Left-Container">
 			<div>
-				<nav>
-					<input id="SearchBar" type="text" placeholder="#Search" />
-				</nav>
 				<div class="ProfileInfoContainer">
-					<img id="ProfilePic" src="../Assets/JamariaSims.jpg" />
+					<img id="ProfilePic" src="" />
 					<h1>JamariaSims</h1>
 					<p>@jamariasims</p>
 					<p id="ProfileStatus">
@@ -36,7 +65,7 @@
 			<div class="ToFollowContainer">
 				<h2>Who to follow</h2>
 				<section>
-					<img src="../Assets/JamariaSims.jpg" />
+					<img src="" />
 					<div>
 						<p id="Box-Name">Jamaria Sims</p>
 						<p id="Box-Username">@jamariasims</p>
@@ -44,33 +73,37 @@
 					<button>Follow</button>
 				</section>
 				<section>
-					<img src="../Assets/JamariaSims.jpg" />
+					<img src="" />
 					<div>
 						<p id="Box-Name">Jamaria Sims</p>
 						<p id="Box-Username">@jamariasims</p>
 					</div>
 					<button>Follow</button>
 				</section>
-				<section>
-					<img src="../Assets/JamariaSims.jpg" />
-					<div>
-						<p id="Box-Name">Jamaria Sims</p>
-						<p id="Box-Username">@jamariasims</p>
-					</div>
-					<button>Follow</button>
-				</section>
-				<section>
-					<img src="../Assets/JamariaSims.jpg" />
-					<div>
-						<p id="Box-Name">Jamaria Sims</p>
-						<p id="Box-Username">@jamariasims</p>
-					</div>
-					<button>Follow</button>
-				</section>
+
 				<a>Show More</a>
 			</div>
 		</section>
-		<section class="MiddleContainer"></section>
-		<section class="RightContainer"></section>
+		<section class="Middle-Container">
+			<div class="MC-Header">
+				<img src="" />
+				<div>
+					<input type="text" placeholder="What's happening?" />
+					<nav>
+						<div>
+							<button>Photo</button>
+							<button>Video</button>
+						</div>
+
+						<button>Tweet</button>
+					</nav>
+				</div>
+			</div>
+		</section>
+		<section class="Right-Container">
+			<div class="MC-Header">
+				<input type="text" placeholder="What's happening?" />
+			</div>
+		</section>
 	</body>
 </html>
