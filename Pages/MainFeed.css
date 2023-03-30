@@ -37,10 +37,6 @@ body{
 .LeftPage{
     width: 25%;
     height: 100vh;
-    overflow: hidden;
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
 }
 .LeftPage div{
     padding-block: 1rem;
@@ -98,7 +94,7 @@ body{
 .LeftPage .FollowList li{
     display: flex;
     justify-content: space-between;
-    width: 75%;
+    width: 90%;
     margin: 0% auto;
     place-items: center;
     text-align: left;
@@ -108,14 +104,29 @@ body{
     height: 3.5rem;
     border-radius: 5rem;
 }
+.LeftPage .FollowList li div{
+    text-align: left;
+    width: 40%;
+    margin: 0% auto;
+}
+.LeftPage .FollowList li div p{
+    font-weight: 700;
+}
+.LeftPage .FollowList li div span{
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #54626E
+}
 .LeftPage .FollowList button{
     cursor: pointer;
     font-size: 0.8rem;
-    background: none;
-    color: white;
-    border: white 1px solid;
-    padding: 0.5rem 1rem;
+    background: white;
+    border: black 1px solid;
     border-radius: 5rem;
+    color: var(--Color7);
+    font-weight: 700;
+    padding-inline: 10%;
+    padding-block: 2%;
 }
 .MiddlePage{
     width: 50%;
@@ -140,6 +151,11 @@ body{
 }
 .MiddlePage>nav>div>span{
     margin-inline: 0.5rem;
+}
+.MiddlePage>.Status>div>nav>button{
+    color: var(--Color7);
+    background: white;
+    font-weight: 700;
 }
 .MiddlePage .Status{
     display: grid;
@@ -265,28 +281,47 @@ font-size: 0.8rem;
 }
 .RightPage{
     width: 15%;
-    height: 100vh;
-    background-color: var(--Color2);
-    margin-inline: .2rem;
-    background-color: var(--Color2);
+    height: 74.4vh;
 }
-.RightPage h2{
-    margin-top: 2rem;
+
+.RightPage button{
+    cursor: pointer;
+    font-size: 0.8rem;
+    background: var(--Color2);
+    padding: 0.5rem 2rem;
+    color: white;
+    border:none;
+    border-radius: 5rem;
+    font-size:0.7rem;
+    font-weight: bold;
+    margin-top: 12%;
+    margin-bottom: 7.3%;
 }
-.RightPage>div{
+.RightPage Section{
+    background-color: var(--Color2);
+    height: 100%;
+}
+.RightPage>section>div{
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 0% auto;
     margin-block: 1rem;
+    padding: 1rem;
+    
 }
-.RightPage>div>a{
+.RightPage>section>div>a{
     text-decoration: none;
     color: white;
     font-size: 1rem;
     font-weight: 700;
 }
-.RightPage>div>p{
+.RightPage img{
     text-align: center;
-    margin-block: 0.5rem;
+    place-content: center;
+    margin-top: 5%;
+}
+.Extra-ShowMore{
+    color: var(--Color7);
+    font-weight: 700;
 }
