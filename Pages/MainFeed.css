@@ -287,6 +287,9 @@ font-size: 0.8rem;
     background-color: var(--Color2);
     height: 100%;
 }
+.RightPage>section>h2 {
+    padding-top: 5%;
+}
 .RightPage>section>div{
     display: flex;
     flex-direction: column;
