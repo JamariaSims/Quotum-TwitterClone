@@ -36,6 +36,8 @@ body{
     height: 100vh;
     background-color:rgb(26, 56, 95);
     margin-inline:.2rem;
+        overflow: hidden;
+            overflow-y: scroll;
 }
 .LeftPage div{
     border-radius: 1rem;
@@ -82,6 +84,35 @@ body{
     color: #F5FDFF;
     font-weight: 600;
     width: 50%;
+}
+.LeftPage .WhoToFollow{
+    margin-top: 0.5rem;
+}
+.LeftPage .FollowList{
+    display: flex;
+    flex-direction: column;
+}
+.LeftPage .FollowList li{
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    margin: 0% auto;
+    place-items: center;
+    text-align: left;
+}
+.LeftPage .FollowList li img{
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 5rem;
+}
+.LeftPage .FollowList button{
+    cursor: pointer;
+    font-size: 0.8rem;
+    background: none;
+    color: white;
+    border: white 1px solid;
+    padding: 0.5rem 1rem;
+    border-radius: 5rem;
 }
 .MiddlePage{
     width: 50%;
