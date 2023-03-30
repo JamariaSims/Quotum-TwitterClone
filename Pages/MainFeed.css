@@ -283,20 +283,6 @@ font-size: 0.8rem;
     width: 15%;
     height: 74.4vh;
 }
-
-.RightPage button{
-    cursor: pointer;
-    font-size: 0.8rem;
-    background: var(--Color2);
-    padding: 0.5rem 2rem;
-    color: white;
-    border:none;
-    border-radius: 5rem;
-    font-size:0.7rem;
-    font-weight: bold;
-    margin-top: 12%;
-    margin-bottom: 7.3%;
-}
 .RightPage Section{
     background-color: var(--Color2);
     height: 100%;
@@ -323,5 +309,14 @@ font-size: 0.8rem;
 }
 .Extra-ShowMore{
     color: var(--Color7);
+    font-weight: 700;
+}
+.Extra-Logout{
+    margin-top: 14%;
+    margin-bottom: 9%;
+}
+.Extra-Logout a{
+    text-decoration: none;
+    color: white;
     font-weight: 700;
 }
