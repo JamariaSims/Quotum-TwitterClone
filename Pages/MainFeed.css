@@ -303,9 +303,7 @@ font-size: 0.8rem;
     font-weight: 700;
 }
 .RightPage img{
-    text-align: center;
-    place-content: center;
-    margin-top: 5%;
+    margin-top: 1rem;
 }
 .Extra-ShowMore{
     color: var(--Color7);
