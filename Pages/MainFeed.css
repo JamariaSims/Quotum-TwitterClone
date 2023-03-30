@@ -12,39 +12,227 @@
     --Color7: #FF0000;
 
     font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 20px;
+}
+h1{
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+h2{
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 body{
     background-color: var(--Color1);
-    color: var(--Color4);
+    color: white;
     display: flex;
     justify-content: center;
     margin: 0% auto;
+    text-align: center;
 }
 .LeftPage{
-    width: 20%;
+    width: 25%;
     height: 100vh;
-    background-color: var(--Color2);
+    background-color:rgb(26, 56, 95);
     margin-inline:.2rem;
+}
+.LeftPage div{
+    border-radius: 1rem;
+    padding-block: 1rem;
+    background-color: #1B2730;
+}
+.LeftPage input{
+    width: 80%;
+    border: none;
+    color: #06141D;
+    padding: 0.2rem;
+    border-radius: 5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    padding: 0.2rem 1rem;
+    margin-top: 2rem;
+}
+.LeftPage .ProfileHeader img{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 5rem;
+}
+.LeftPage #Username{
+    color: var(--Color4);
+    margin-bottom: 1rem;
+}
+.LeftPage .ProfileHeader p{
+    width: 70%;
+    font-weight: 500;
+    margin: 0% auto;
+}
+.LeftPage .ProfileHeader section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0% auto;
+}
+.LeftPage .ProfileHeader section div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: #F5FDFF;
+    font-weight: 600;
+    width: 50%;
 }
 .MiddlePage{
     width: 45%;
     height: 100vh;
     background-color: var(--Color2);
     margin-inline: .2rem;
+    background-color: rgb(26, 56, 95);
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.MiddlePage > nav{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+    margin-bottom: 1.3rem;
+}
+.MiddlePage>nav>div{
+    display: flex;
+    place-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+}
+.MiddlePage>nav>div>span{
+    margin-inline: 0.5rem;
+}
+.MiddlePage .Status{
+    display: grid;
+    grid-template-columns: 10% 90%;
+    width: 100%;
+    margin: 0% auto;
+    border-radius: 0.5rem;
+    padding-block: 1rem;
+    background-color: #1B2730;
+}
+.MiddlePage .Status img{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 5rem;
+}
+.MiddlePage input{
+    width: 80%;
+    border: none;
+    color: #06141D;
+    padding: 0.2rem;
+    border-radius: 5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
+.MiddlePage .Status nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0% auto;
+}
+.MiddlePage .Status button{
+    cursor: pointer;
+    font-size: 0.8rem;
+    background: none;
+    color: white;
+    border: white 1px solid;
+    padding: 0.5rem 1rem;
+    border-radius: 5rem;
+}
+.MiddlePage .PostContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0% auto;
+    margin-top: 2%;
+    background-color: #1B2730;
+    padding-top: 2%;
+}
+.MiddlePage .PostContainer .PostPic{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 5rem;
+    margin-bottom: 15%;
+}
+.MiddlePage .PostContainer .StatusInfo{
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin: 0% auto;
+}
+.MiddlePage .PostContainer .StatusInfo .HeaderInfo {
+    display: flex;
+    place-items: center;
+    justify-content: left;
+    gap: 0.5rem;
+}
+.MiddlePage .PostContainer .StatusInfo .HeaderInfo p{
+font-size: 0.8rem;
+    font-weight: 600;
+    place-items: center;
+}
+.MiddlePage .PostContainer .StatusInfo .PostCreated{
+  display: flex;
+  justify-content: left;
+  font-size: 0.6rem;
+  font-weight: 600;
+}
+.MiddlePage .PostContainer .StatusInfo .PostText{
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    margin: 0% auto;
+}
+.MiddlePage .PostContainer .StatusInfo img{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 5rem;
+    margin-top: 2%;
+    margin-left: 2%;
+}
+.MiddlePage .PostLikes{
+    display: flex;
+    place-items: center;
+    justify-content: space-between;
+    width: 22%;
+}
+.MiddlePage .PostActions{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0% auto;
+    margin-top: 2%;
+}
+.MiddlePage .PostNav{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0% auto;
+    margin-top: 2%;
+}
+.MiddlePage .PostNav button{
+    cursor: pointer;
+        font-size: 0.8rem;
+        background: none;
+        color: white;
+        border: white 1px solid;
+        padding: 0.5rem 1rem;
+        border-radius: 5rem;
 }
 .RightPage{
     width: 25%;
     height: 100vh;
     background-color: var(--Color2);
     margin-inline: .2rem;
-}
-#SearchBar{
-    width: 25%;
-    height: 3rem;
-    border-radius: 1rem;
-    border: none;
-    padding: 0.5rem;
-    font-size: 1rem;
-    color: #06141D;
-    font-size: 1.5rem;
+        background-color: rgb(26, 56, 95);
 }

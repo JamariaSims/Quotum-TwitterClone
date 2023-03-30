@@ -4,6 +4,9 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 		<link rel="stylesheet" href="MainFeed.css" />
 		<title>Main Feed</title>
 	</head>
@@ -18,7 +21,7 @@
 					alt="Profile Picture"
 					width="200px" />
 				<h1>Jamaria Sims</h1>
-				<p>@jamariasims</p>
+				<p id="Username">@jamariasims</p>
 				<p>
 					If you look at what you have in life, you'll always have more. If you
 					look at what you don't have in life, you'll never have enough.
@@ -37,21 +40,184 @@
 		</section>
 		<section class="MiddlePage">
 			<nav>
-				<button>Home</button>
-				<button>Notifications</button>
-				<button>Messages</button>
+				<div>
+					<span class="material-symbols-outlined" id="Home">home</span>
+					Home
+				</div>
+				<div>
+					<span class="material-symbols-outlined">notifications</span>
+					Notifications
+				</div>
+				<div>
+					<span class="material-symbols-outlined">mail</span>
+					Inbox
+				</div>
 			</nav>
-			<div>
+			<div class="Status">
 				<img
 					src="../Assets/JamariaSims.jpg"
 					alt="Profile Picture"
 					width="78px" />
 				<div>
-					<input type="text" />
+					<input type="text" placeholder="What's on your mind?" />
 					<nav>
-						<button>Photo</button>
-						<button>Video</button>
+						<div>
+							<button>Photo</button>
+							<button>Video</button>
+						</div>
 						<button>Connect</button>
+					</nav>
+				</div>
+			</div>
+			<div class="PostContainer">
+				<img
+					src="../Assets/JamariaSims.jpg"
+					alt="Profile Picture"
+					width="78px"
+					class="PostPic" />
+				<div class="StatusInfo">
+					<div class="HeaderInfo">
+						<h2>Jamaria Sims</h2>
+						<p>@jamariasims</p>
+					</div>
+					<p class="PostCreated">Few minutes ago</p>
+					<p class="PostText">
+						If you look at what you have in life, you'll always have more. If
+						you look at what you don't have in life, you'll never have enough.
+					</p>
+					<div class="PostActions">
+						<div class="PostLikes">
+							<img
+								src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+								alt="Profile Picture"
+								width="78px" />
+							<img
+								src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+								alt="Profile Picture"
+								width="78px" />
+							<p>241k</p>
+						</div>
+						<p>1.2k Comments</p>
+					</div>
+
+					<nav class="PostNav">
+						<button>Comment</button>
+						<button>Retweet</button>
+						<button>Like</button>
+					</nav>
+				</div>
+			</div>
+			<div class="PostContainer">
+				<img
+					src="../Assets/JamariaSims.jpg"
+					alt="Profile Picture"
+					width="78px"
+					class="PostPic" />
+				<div class="StatusInfo">
+					<div class="HeaderInfo">
+						<h2>Jamaria Sims</h2>
+						<p>@jamariasims</p>
+					</div>
+					<p class="PostCreated">Few minutes ago</p>
+					<p class="PostText">
+						If you look at what you have in life, you'll always have more. If
+						you look at what you don't have in life, you'll never have enough.
+					</p>
+					<div class="PostActions">
+						<div class="PostLikes">
+							<img
+								src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+								alt="Profile Picture"
+								width="78px" />
+							<img
+								src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+								alt="Profile Picture"
+								width="78px" />
+							<p>241k</p>
+						</div>
+						<p>1.2k Comments</p>
+					</div>
+
+					<nav class="PostNav">
+						<button>Comment</button>
+						<button>Retweet</button>
+						<button>Like</button>
+					</nav>
+				</div>
+			</div>
+			<div class="PostContainer">
+				<img
+					src="../Assets/JamariaSims.jpg"
+					alt="Profile Picture"
+					width="78px"
+					class="PostPic" />
+				<div class="StatusInfo">
+					<div class="HeaderInfo">
+						<h2>Jamaria Sims</h2>
+						<p>@jamariasims</p>
+					</div>
+					<p class="PostCreated">Few minutes ago</p>
+					<p class="PostText">
+						If you look at what you have in life, you'll always have more. If
+						you look at what you don't have in life, you'll never have enough.
+					</p>
+					<div class="PostActions">
+						<div class="PostLikes">
+							<img
+								src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+								alt="Profile Picture"
+								width="78px" />
+							<img
+								src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+								alt="Profile Picture"
+								width="78px" />
+							<p>241k</p>
+						</div>
+						<p>1.2k Comments</p>
+					</div>
+
+					<nav class="PostNav">
+						<button>Comment</button>
+						<button>Retweet</button>
+						<button>Like</button>
+					</nav>
+				</div>
+			</div>
+			<div class="PostContainer">
+				<img
+					src="../Assets/JamariaSims.jpg"
+					alt="Profile Picture"
+					width="78px"
+					class="PostPic" />
+				<div class="StatusInfo">
+					<div class="HeaderInfo">
+						<h2>Jamaria Sims</h2>
+						<p>@jamariasims</p>
+					</div>
+					<p class="PostCreated">Few minutes ago</p>
+					<p class="PostText">
+						If you look at what you have in life, you'll always have more. If
+						you look at what you don't have in life, you'll never have enough.
+					</p>
+					<div class="PostActions">
+						<div class="PostLikes">
+							<img
+								src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+								alt="Profile Picture"
+								width="78px" />
+							<img
+								src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+								alt="Profile Picture"
+								width="78px" />
+							<p>241k</p>
+						</div>
+						<p>1.2k Comments</p>
+					</div>
+
+					<nav class="PostNav">
+						<button>Comment</button>
+						<button>Retweet</button>
+						<button>Like</button>
 					</nav>
 				</div>
 			</div>
