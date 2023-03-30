@@ -84,7 +84,7 @@ body{
     width: 50%;
 }
 .MiddlePage{
-    width: 45%;
+    width: 50%;
     height: 100vh;
     background-color: var(--Color2);
     margin-inline: .2rem;
@@ -154,7 +154,7 @@ body{
     align-items: center;
     width: 100%;
     margin: 0% auto;
-    margin-top: 2%;
+    margin-top: 1%;
     background-color: #1B2730;
     padding-top: 2%;
 }
@@ -167,7 +167,7 @@ body{
 .MiddlePage .PostContainer .StatusInfo{
     display: flex;
     flex-direction: column;
-    width: 75%;
+    width: 85%;
     margin: 0% auto;
 }
 .MiddlePage .PostContainer .StatusInfo .HeaderInfo {
@@ -204,7 +204,7 @@ font-size: 0.8rem;
     display: flex;
     place-items: center;
     justify-content: space-between;
-    width: 22%;
+    width: 18%;
 }
 .MiddlePage .PostActions{
     display: flex;
@@ -230,9 +230,29 @@ font-size: 0.8rem;
         border-radius: 5rem;
 }
 .RightPage{
-    width: 25%;
+    width: 15%;
     height: 100vh;
     background-color: var(--Color2);
     margin-inline: .2rem;
         background-color: rgb(26, 56, 95);
+}
+.RightPage h2{
+    margin-top: 2rem;
+}
+.RightPage>div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0% auto;
+    margin-block: 1rem;
+}
+.RightPage>div>a{
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.RightPage>div>p{
+    text-align: center;
+    margin-block: 0.5rem;
 }
