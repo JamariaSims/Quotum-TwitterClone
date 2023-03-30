@@ -31,11 +31,16 @@ body{
     margin: 0% auto;
     text-align: center;
 }
+.LeftPage::-webkit-scrollbar,.MiddlePage::-webkit-scrollbar{
+    display: none;
+}
 .LeftPage{
     width: 25%;
     height: 100vh;
     overflow: hidden;
     overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 .LeftPage div{
     padding-block: 1rem;
@@ -44,7 +49,8 @@ body{
 .LeftPage input{
     width: 80%;
     border: none;
-    color: #06141D;
+    color: var(--Color4);
+    background-color: var(--Color2);
     padding: 0.2rem;
     border-radius: 5rem;
     margin-bottom: 1rem;
@@ -117,6 +123,8 @@ body{
     margin-inline: .2rem;
     overflow: hidden;
     overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 .MiddlePage > nav{
     display: flex;
@@ -176,14 +184,13 @@ body{
 .MiddlePage .PostContainer{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 95%;
+    background-color: #1B2730;
+    padding: 2%;
     margin: 0% auto;
     margin-top: 1%;
-    background-color: #1B2730;
-    padding-top: 2%;
-    padding-inline:2%;
 }
 .MiddlePage .PostContainer .PostPic{
     width: 5rem;
