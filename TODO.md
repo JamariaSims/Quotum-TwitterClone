@@ -1,55 +1,34 @@
 # PROBLEMS
 
 1. emails as a object not working switching to username instead
+2. Not responsive =)
 
 # Login Page
 
-1.  Form Control - need to add requirements for if input is the right data or null
-2.  Buttons/Anchor tags need to be more user friendly with on hover events
-3.  Login State
-    If email is email type and password is not null or >= 8 characters{
-    TRY: get( fetch(`${fireBaseURL}${Email}/${jsonEXT}`)Maybe?? )
-    if(response is null){
-    user don't exist
-    }
-    else if( Response.data.email.password ){
+1. Buttons/Anchor tags need to be more user friendly with on hover events
+2. User needs to know input errors.
 
-                }
-        }
+# Create Account
 
-# JSON DATA STRUCTURE
+1. Same state as login state but with post if endpoint exist username is taken
+2. replace email with username
+3. add confirm password input
+4. Buttons/Anchor tags need to be more user friendly with on hover events
+5. Maybe add a model or span for username taken somewhere
 
-Users:{
-email:{
-username:"",
-password:"",
-firstName:"",
-lastName:"",
-}
-}
-Posts:{
-2378025704:{
-3475375:{
-post:"fjhesfhfeo hfowehfi",
-createdBy:email,
-timeStamp:"",
-likes:{},
-comments:{
-23764747:{
-comment:"fdhfdoshf fjefjewei"
-likes:{}
-replyComments:{}
-}
-}
-}
-}
-}
+# Main Feed
+Level: 999999 - extreme hard mode xD
 
+- Profile Component
+- Who to follow Component
+- Status Component
+- Tweet/Connect Components in Tweets/Connects Component
+- Hot Topic Components in Hot Topic Component
 # Update The Dom
 
 ## Append Any Changes
 
-1. Create:
-2. Read:
-3. Update:
-4. Delete:
+1. Create: Create Account
+2. Read: Login/Main Feed
+3. Update: Main Feed
+4. Delete: Main Feed
