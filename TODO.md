@@ -1,6 +1,20 @@
+# Login Page
+1. Input Form needs to be a fixed size instead of growing with the page.
+2. Form Control - need to add requirements for if input is the right data or null
+3. Buttons/Anchor tags need to be more user friendly with on hover events
+4. Login State
+        If email is email type and password is not null or >= 8 characters{
+                TRY: get( fetch(`${fireBaseURL}${Email}/${jsonEXT}`)Maybe?? )
+                if(response is null){
+                        user don't exist
+                }
+                else if( Response.data.email.password ){
+
+                }
+        }
 # JSON DATA STRUCTURE  
 Users:{
-        @username:{
+        email:{
                 username:"",
                 password:"",
                 firstName:"",
@@ -11,7 +25,7 @@ Posts:{
         2378025704:{
                 3475375:{
                         post:"fjhesfhfeo hfowehfi",
-                        createdBy:@Username,
+                        createdBy:email,
                         timeStamp:"",
                         likes:{},
                         comments:{
@@ -32,3 +46,4 @@ Posts:{
 2. Read:
 3. Update:
 4. Delete:
+
