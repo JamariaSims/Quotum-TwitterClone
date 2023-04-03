@@ -1,46 +1,40 @@
-* {
+*{
     padding: 0;
     margin: 0;
     font-family: "Segoe UI", Arial, sans-serif;
     line-height: 1.7;
 }
-
-.App {
+.App{
     display: flex;
     width: 100%;
     font-size: 16px;
 }
-
-.MainLeft-Container {
+.MainLeft-Container{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 50%;
     background-color: #06141D;
     text-align: center;
-    height: 100vh;
+    height:100vh;
 }
-
-.MainLeft-ContainerBody {
+.MainLeft-ContainerBody{
     display: flex;
     flex-direction: column;
     gap: 2rem;
     margin-top: 25%;
 }
-
-.MainLeft-Container img {
+.MainLeft-Container img{
     width: 35rem;
     margin: 0% auto;
 }
-
-.MainLeft-Container p {
+.MainLeft-Container p{
     font-size: 2rem;
     font-weight: 600;
     width: 60%;
     margin: 0% auto;
     color: white;
 }
-
 .MainRight-Container {
     display: flex;
     flex-direction: column;
@@ -48,39 +42,28 @@
     margin: 0% auto;
     background-color: rgb(255, 255, 255);
 }
-
-.MainRight-Container form {
+.MainRight-Container form{
     display: flex;
     flex-direction: column;
     margin: 0% auto;
     width: 70%;
 }
-
-.MainRight-Container h2 {
+.MainRight-Container h2{
     text-align: center;
     font-size: 3rem;
-    margin-top: 15rem;
+    margin-top: 10rem;
 }
-
-.MainRight-Container label {
+.MainRight-Container label{
     font-size: 1rem;
     font-weight: 600;
     text-align: left;
 }
-
-.MainRight-Container input {
+.MainRight-Container input{
     width: 100%;
     height: 2rem;
     font-size: 1.5rem;
 }
-form a{
-text-align: center;
-font-size: 1.2rem;
-font-weight: 600;
-margin-top: 1%;
-}
-
-#BTN-Login {
+#BTN-Create{
     border: #364451 1px solid;
     width: 25%;
     margin: 0% auto;
@@ -90,26 +73,22 @@ margin-top: 1%;
     font-weight: 600;
     color: red;
     background: none;
-    margin-top: 2%;
+    margin-top: 5%;
     padding-block: 1%;
 }
-
-.BottomForm-Container {
+.BottomForm-Container{
     width: 100%;
     margin: 0% auto;
     text-align: center;
     font-size: 1.2rem;
-    margin-top: 1%;
 }
-
-.BottomForm-Container a {
+.BottomForm-Container a{
     text-decoration: none;
     font-weight: bold;
     color: #06141D;
     letter-spacing: 0.8px;
 }
-
-.BottomForm-Container span {
+.BottomForm-Container span{
     font-size: 1rem;
     font-weight: bold;
 }
