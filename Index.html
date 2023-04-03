@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login Page</title>
-    <link rel="stylesheet" href="/Index.css" />
-  </head>
-  <body>
-    <section class="App">
-      <section class="MainLeft-Container">
-        <div class="MainLeft-ContainerBody">
-          <img src="../Assets/ConnectX-Logo.png" />
-          <p>Connect with friends and the world around you on ConnectX</p>
-        </div>
-      </section>
-      <section class="MainRight-Container">
-        <h2>Login</h2>
-        <form action="../Pages/MainFeed.html">
-          <label>Email</label>
-          <br />
-          <input type="email" />
-          <br />
-          <label>Password</label>
-          <br />
-          <input type="text" />
-          <br />
-          <a>Forgot your password?</a>
-          <button id="BTN-Login" type="submit">SIGN IN</button>
-        </form>
-        <div class="BottomForm-Container">
-          <a href="/Pages/CreateAccount.html">Create Account</a>
-        </div>
-      </section>
-    </section>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Login Page</title>
+		<link rel="stylesheet" href="/Index.css" />
+	</head>
+	<body>
+		<section class="App">
+			<section class="MainLeft-Container">
+				<div class="MainLeft-ContainerBody">
+					<img src="../Assets/ConnectX-Logo.png" />
+					<p>Connect with friends and the world around you on ConnectX</p>
+				</div>
+			</section>
+			<section class="MainRight-Container">
+				<h2>Login</h2>
+				<form id="Form">
+					<label>Username</label>
+					<br />
+					<input name="username" id="username" type="text" required />
+					<br />
+					<label>Password</label>
+					<br />
+					<input name="password" id="password" type="text" required />
+					<br />
+					<a>Forgot your password?</a>
+					<button id="BTN-Login" type="submit">SIGN IN</button>
+				</form>
+				<div class="BottomForm-Container">
+					<a href="/Pages/CreateAccount.html">Create Account</a>
+				</div>
+			</section>
+		</section>
+		<script src="/Scripts/Index.js"></script>
+		<script src="/Scripts/Utils.js"></script>
+	</body>
 </html>

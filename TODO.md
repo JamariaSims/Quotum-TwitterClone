@@ -1,4 +1,9 @@
+# PROBLEMS
+
+1. emails as a object not working switching to username instead
+
 # Login Page
+
 1.  Form Control - need to add requirements for if input is the right data or null
 2.  Buttons/Anchor tags need to be more user friendly with on hover events
 3.  Login State
