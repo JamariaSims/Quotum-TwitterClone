@@ -1,94 +1,94 @@
-*{
-    padding: 0;
-    margin: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
-    line-height: 1.7;
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  line-height: 1.7;
 }
-.App{
-    display: flex;
-    width: 100%;
-    font-size: 16px;
+.App {
+  display: flex;
+  width: 100%;
+  font-size: 16px;
 }
-.MainLeft-Container{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 50%;
-    background-color: #06141D;
-    text-align: center;
-    height:100vh;
+.MainLeft-Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  background-color: #06141d;
+  text-align: center;
+  height: 100vh;
 }
-.MainLeft-ContainerBody{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-top: 25%;
+.MainLeft-ContainerBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 25%;
 }
-.MainLeft-Container img{
-    width: 35rem;
-    margin: 0% auto;
+.MainLeft-Container img {
+  width: 35rem;
+  margin: 0% auto;
 }
-.MainLeft-Container p{
-    font-size: 2rem;
-    font-weight: 600;
-    width: 60%;
-    margin: 0% auto;
-    color: white;
+.MainLeft-Container p {
+  font-size: 2rem;
+  font-weight: 600;
+  width: 60%;
+  margin: 0% auto;
+  color: white;
 }
 .MainRight-Container {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    margin: 0% auto;
-    background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0% auto;
+  background-color: rgb(255, 255, 255);
 }
-.MainRight-Container form{
-    display: flex;
-    flex-direction: column;
-    margin: 0% auto;
-    width: 70%;
+.MainRight-Container form {
+  display: flex;
+  flex-direction: column;
+  margin: 0% auto;
+  width: 700px;
 }
-.MainRight-Container h2{
-    text-align: center;
-    font-size: 3rem;
-    margin-top: 10rem;
+.MainRight-Container h2 {
+  text-align: center;
+  font-size: 3rem;
+  margin-top: 10rem;
 }
-.MainRight-Container label{
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: left;
+.MainRight-Container label {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
 }
-.MainRight-Container input{
-    width: 100%;
-    height: 2rem;
-    font-size: 1.5rem;
+.MainRight-Container input {
+  width: 100%;
+  height: 2rem;
+  font-size: 1.5rem;
 }
-#BTN-Create{
-    border: #364451 1px solid;
-    width: 25%;
-    margin: 0% auto;
-    border-radius: 1rem;
-    padding: 0.5rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: red;
-    background: none;
-    margin-top: 5%;
-    padding-block: 1%;
+#BTN-Create {
+  border: #364451 1px solid;
+  width: 25%;
+  margin: 0% auto;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: red;
+  background: none;
+  margin-top: 5%;
+  padding-block: 1%;
 }
-.BottomForm-Container{
-    width: 100%;
-    margin: 0% auto;
-    text-align: center;
-    font-size: 1.2rem;
+.BottomForm-Container {
+  width: 100%;
+  margin: 0% auto;
+  text-align: center;
+  font-size: 1.2rem;
 }
-.BottomForm-Container a{
-    text-decoration: none;
-    font-weight: bold;
-    color: #06141D;
-    letter-spacing: 0.8px;
+.BottomForm-Container a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #06141d;
+  letter-spacing: 0.8px;
 }
-.BottomForm-Container span{
-    font-size: 1rem;
-    font-weight: bold;
+.BottomForm-Container span {
+  font-size: 1rem;
+  font-weight: bold;
 }
