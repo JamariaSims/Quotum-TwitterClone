@@ -21,12 +21,12 @@ const formValidation = (username, password) => {
 //Check if password is valid
 function checkPassword(password, data) {
 	// If password is less than 7 characters long
-	if (isNotCorrectLength) {
+	if (isNotCorrectLength(password)) {
 		console.log("Password must be at least 7 characters long");
 		return;
 	}
 	//If password contains spaces
-	if (password.contains(/^\s+|\s+$/gm, "")) {
+	if (password.includes(`/^\s+|\s+$/gm, ""`)) {
 		console.log("Password cannot contain spaces!");
 		return;
 	}
