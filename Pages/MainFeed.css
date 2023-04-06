@@ -31,6 +31,13 @@ body {
 	margin: 0% auto;
 	text-align: center;
 }
+.hide {
+	display: none;
+}
+.flex-down {
+	display: flex;
+	flex-direction: column;
+}
 .LeftPage::-webkit-scrollbar,
 .MiddlePage::-webkit-scrollbar {
 	display: none;

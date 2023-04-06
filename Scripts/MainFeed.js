@@ -76,62 +76,77 @@ function displayPosts() {
 				return;
 			}
 			for (const [key, post] of Object.entries(data)) {
-				document.getElementById(
-					"PostsContainer"
-				).innerHTML += `<div class="PostContainer" id=${key}>
-                        <img
-                                src="../Assets/BlankProfilePicture.png"
-                                alt="Profile Picture"
-                                width="78px"
-                                class="PostPic"
-                        />
-                        <div class="StatusInfo">
-                                <div class="HeaderInfo">
-                                        <h2>${post.firstName} ${
-					post.lastName
-				}</h2>
-                                        <p>${post.createdBy}</p>
-                                </div>
-                                <p class="PostCreated">${post.timeStamp}</p>
-                                <p class="PostText">
-                ${post.post}
-                                </p>
-                                <div class="PostActions">
-                                        <div class="PostLikes">
-                                                <img
-                                                        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                                                        alt="Profile Picture"
-                                                        width="78px"
-                                                />
-                                                <img
-                                                        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                                                        alt="Profile Picture"
-                                                        width="78px"
-                                                />
-                                                <p>${
-																									post.likes
-																										? post.likes.length
-																										: 0
-																								} Likes</p>
-                                        </div>
-                                        <p>${
-																					post.comments
-																						? post.comments.length
-																						: 0
-																				} Comments</p>
-                                </div>
-                
-                                <nav class="PostNav">
-                                        <button>Comment</button>
-                                        <button>Retweet</button>
-                                        <button>Like</button>
-                                </nav>
-				<nav>
-				<button>Edit</button>
-				<button id="BTN-Delete" name=${key} onClick=deletePost(event)>Delete</button>
+				document.getElementById("PostsContainer").innerHTML += `
+				<div class="flex-down">
+				<div class="PostContainer" id=${key}>
+				<img
+					src="../Assets/BlankProfilePicture.png"
+					alt="Profile Picture"
+					width="78px"
+					class="PostPic"
+				/>
+				<div class="StatusInfo">
+					<div class="HeaderInfo">
+						<h2>${post.firstName} ${post.lastName}</h2>
+						<p>${post.createdBy}</p>
+					</div>
+					<p class="PostCreated">${post.timeStamp}</p>
+					<p class="PostText">
+			${post.post}
+					</p>
+					<div class="PostActions">
+						<div class="PostLikes">
+							<img
+								src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+								alt="Profile Picture"
+								width="78px"
+							/>
+							<img
+								src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+								alt="Profile Picture"
+								width="78px"
+							/>
+							<p>${post.likes ? post.likes.length : 0} Likes</p>
+						</div>
+						<p>${post.comments ? post.comments.length : 0} Comments</p>
+					</div>
+			
+					<nav class="PostNav">
+						<button>Comment</button>
+						<button>Retweet</button>
+						<button>Like</button>
+					</nav>
+					<nav>
+					<button id="BTN-Edit" name=${key} onClick=editPost(event)>Edit</button>
+					<button id="BTN-Delete" name=${key} onClick=deletePost(event)>Delete</button>
+					</nav>
+				</div>
+			</div>
+
+			<div class="PostContainer" id=${key}>
+			<img
+				src="../Assets/BlankProfilePicture.png"
+				alt="Profile Picture"
+				width="78px"
+				class="PostPic"
+			/>
+			<div class="StatusInfo">
+				<div class="HeaderInfo">
+					<h2>${post.firstName} ${post.lastName}</h2>
+					<p>${post.createdBy}</p>
+				</div>
+				<input
+				id="BTN-postStatusEdit"
+				type="text"
+				placeholder=${post.post}
+			/>
+				<nav class="PostNav">
+					<button>Cancel</button>
+					<button>Save</button>
 				</nav>
-                        </div>
-                </div>`;
+			</div>
+		</div>
+			</div>`;
 			}
 		});
 }
@@ -154,7 +169,7 @@ function addPost(event) {
 	statusCreateBtn.value = "";
 	displayPosts();
 }
-//DELETE TWEETS
+//DELETE TWEET
 function deletePost(event, key) {
 	event.preventDefault();
 	fetch(`${fireBaseURL}Posts/${event.target.name}/${jsonEXT}`, {
@@ -164,4 +179,12 @@ function deletePost(event, key) {
 		.then((data) => {
 			displayPosts();
 		});
+}
+//EDIT TWEET
+function editPost(event) {
+	event.preventDefault();
+	const currentPost = document.getElementById(event.target.name);
+	console.log(currentPost);
+	const inputEdit = document.getElementById("BTN-postStatusEdit");
+	inputEdit.classList.toggle("hide");
 }
