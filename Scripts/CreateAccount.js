@@ -1,3 +1,7 @@
+let fireBaseURL = "https://connectx-1fd24-default-rtdb.firebaseio.com/";
+let jsonEXT = ".json";
+const formData = ["firstName", "lastName", "username", "password"];
+
 const form = document.getElementById("form");
 form.addEventListener("submit", (event) => {
 	event.preventDefault();
