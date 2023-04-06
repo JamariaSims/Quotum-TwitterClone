@@ -1,32 +1,42 @@
 getCurrentUser();
-const logoutBtn = document.getElementById(`Btn-Logout`);
-logoutBtn.addEventListener("click", (event) => {
-	event.preventDefault();
-	logoutUser();
-	setTimeout(() => {
-		window.location.replace("/Index.html");
-	}, 1000);
-});
-document.getElementById("ProfileHeader").innerHTML = `
-<img
-src="../Assets/BlankProfilePicture.png"
-alt="Profile Picture"
-width="200px"
-/>
-<h1></h1>
-<p id="Username">@jamariasims</p>
-<p>
-If you look at what you have in life, you'll always have more. If you
-look at what you don't have in life, you'll never have enough.
-</p>
-<section>
-<div>
-        <p>5,678</p>
-        <p>Following</p>
-</div>
-<div>
-        <p>40,566</p>
-        <p>Followers</p>
-</div>
-</section>
-                `;
+setTimeout(() => {
+	const logoutBtn = document.getElementById(`Btn-Logout`);
+	logoutBtn.addEventListener("click", (event) => {
+		event.preventDefault();
+		logoutUser();
+		setTimeout(() => {
+			window.location.replace("/Index.html");
+		}, 1000);
+	});
+	const {
+		username,
+		firstName,
+		lastName,
+		profileBio,
+		profilePic,
+		followers,
+		following,
+	} = currentUser;
+	document.getElementById("ProfileHeader").innerHTML = `
+        <img
+        src="../Assets/BlankProfilePicture.png"
+        alt="Profile Picture"
+        width="200px"
+        />
+        <h1 id="INPUT-name">${firstName} ${lastName}</h1>
+        <p id="Username">${username}</p>
+        <p>
+${profileBio}
+        </p>
+        <section>
+        <div>
+                <p>${following.length || 0}</p>
+                <p>Following</p>
+        </div>
+        <div>
+                <p>${followers.length || 0}</p>
+                <p>Followers</p>
+        </div>
+        </section>
+                        `;
+}, 500);
