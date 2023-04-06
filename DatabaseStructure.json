@@ -38,10 +38,12 @@
 	"Posts": [
 		{
 			"firstName": "Jamaria",
-			"lastName:": "Sims",
+			"lastName": "Sims",
 			"createdBy": "@jamariasims",
 			"timeStamp": "Time",
-			"post": "If you look at what you have in life, you'll always have more. If you look at what you don't have in life, you'll never have enough."
+			"post": "If you look at what you have in life, you'll always have more. If you look at what you don't have in life, you'll never have enough.",
+			"likes": ["@johndoe"],
+			"comments": ["@johndoe", "@jamariasims"]
 		}
 	]
 }

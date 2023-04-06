@@ -14,12 +14,10 @@ async function getCurrentUser() {
 	currentUser.profileBio = jsonData.profileBio || "No bio";
 	currentUser.following = jsonData.following;
 	currentUser.followers = jsonData.followers;
-	console.log(currentUser);
-	console.log(jsonData);
+	return currentUser;
 }
 //Checking if user exist
 async function attemptLogin(username, password) {
-	console.log(`${fireBaseURL}Users/${username}${jsonEXT}`);
 	const response = await fetch(`${fireBaseURL}Users/${username}${jsonEXT}`);
 	const jsonData = await response.json();
 	if (password === jsonData.password) {
@@ -61,4 +59,10 @@ async function logoutUser() {
 			profilePic: "",
 		}),
 	});
+}
+
+async function getPosts() {
+	const response = await fetch(`${fireBaseURL}Posts/${jsonEXT}`);
+	const jsonData = await response.json();
+	return jsonData;
 }
