@@ -15,3 +15,7 @@ function containsInvalidChars(data) {
 	let format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 	return format.test(data);
 }
+// Check If length is less than 7 characters long
+function isNotCorrectLength(data) {
+	return data.length < 7;
+}
