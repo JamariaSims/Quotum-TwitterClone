@@ -83,7 +83,9 @@ function displayPosts() {
                         />
                         <div class="StatusInfo">
                                 <div class="HeaderInfo">
-                                        <h2>${post.firstName} ${post.lastName}</h2>
+                                        <h2>${post.firstName} ${
+					post.lastName
+				}</h2>
                                         <p>${post.createdBy}</p>
                                 </div>
                                 <p class="PostCreated">${post.timeStamp}</p>
@@ -102,9 +104,17 @@ function displayPosts() {
                                                         alt="Profile Picture"
                                                         width="78px"
                                                 />
-                                                <p>${post.likes.length} Likes</p>
+                                                <p>${
+																									post.likes
+																										? post.likes.length
+																										: 0
+																								} Likes</p>
                                         </div>
-                                        <p>${post.comments.length} Comments</p>
+                                        <p>${
+																					post.comments
+																						? post.comments.length
+																						: 0
+																				} Comments</p>
                                 </div>
                 
                                 <nav class="PostNav">
@@ -132,8 +142,6 @@ function addPost(event) {
 			createdBy: currentUser["username"],
 			timeStamp: currentTime,
 			post: statusCreateBtn.value,
-			likes: [currentUser["username"]],
-			comments: [currentUser["username"]],
 		}),
 	});
 	displayPosts();
