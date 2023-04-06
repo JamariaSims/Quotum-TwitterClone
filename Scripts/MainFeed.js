@@ -75,10 +75,10 @@ function displayPosts() {
 			if (!data) {
 				return;
 			}
-			Object.values(data).forEach((post) => {
+			for (const [key, post] of Object.entries(data)) {
 				document.getElementById(
 					"PostsContainer"
-				).innerHTML += `<div class="PostContainer">
+				).innerHTML += `<div class="PostContainer" id=${key}>
                         <img
                                 src="../Assets/BlankProfilePicture.png"
                                 alt="Profile Picture"
@@ -126,9 +126,13 @@ function displayPosts() {
                                         <button>Retweet</button>
                                         <button>Like</button>
                                 </nav>
+				<nav>
+				<button>Edit</button>
+				<button id="BTN-Delete" name=${key} onClick=deletePost(event)>Delete</button>
+				</nav>
                         </div>
                 </div>`;
-			});
+			}
 		});
 }
 
@@ -136,7 +140,6 @@ function displayPosts() {
 function addPost(event) {
 	event.preventDefault();
 	const statusCreateBtn = document.getElementById("BTN-postStatus");
-	event.preventDefault();
 	const currentTime = `${new Date().toUTCString()}`;
 	fetch(`${fireBaseURL}Posts/${jsonEXT}`, {
 		method: "POST",
@@ -150,4 +153,15 @@ function addPost(event) {
 	});
 	statusCreateBtn.value = "";
 	displayPosts();
+}
+//DELETE TWEETS
+function deletePost(event, key) {
+	event.preventDefault();
+	fetch(`${fireBaseURL}Posts/${event.target.name}/${jsonEXT}`, {
+		method: "DELETE",
+	})
+		.then((res) => res.json())
+		.then((data) => {
+			displayPosts();
+		});
 }
