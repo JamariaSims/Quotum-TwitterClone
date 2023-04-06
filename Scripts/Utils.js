@@ -17,28 +17,46 @@ async function getCurrentUser() {
 	currentUser.lastName = jsonData.lastName;
 	currentUser.password = jsonData.password;
 	currentUser.profilePic = jsonData.profilePic;
-	console.log(currentUser);
 }
 
 //Checking if user exist
 async function attemptLogin(username, password) {
 	const response = await fetch(`${fireBaseURL}Users/${username}${jsonEXT}`);
-	const jsonData = await response.json();
+	const jsonData = (await response.json()) || "";
+	console.log(jsonData);
 	if (password === jsonData.password) {
-		console.log(jsonData);
-		fetch(`${fireBaseURL}currentUser/${jsonEXT}`, {
-			method: "PUT",
-			body: JSON.stringify({
-				username: username,
-				firstName: jsonData.firstName,
-				lastName: jsonData.lastName,
-				password: jsonData.password,
-				profilePic: jsonData.profilePic,
-			}),
-		});
-		window.location.replace("/Pages/MainFeed.html");
+		changeUser(username, jsonData);
+		setTimeout(() => {
+			loginUser();
+		}, 1000);
 	} else {
 		console.log("Error!");
 	}
 }
-
+async function changeUser(username, jsonData) {
+	await fetch(`${fireBaseURL}currentUser/${jsonEXT}`, {
+		method: "PUT",
+		body: JSON.stringify({
+			username: username,
+			firstName: jsonData.firstName,
+			lastName: jsonData.lastName,
+			password: jsonData.password,
+			profilePic: jsonData.profilePic,
+		}),
+	});
+}
+async function loginUser() {
+	window.location.replace("/Pages/MainFeed.html");
+}
+async function logoutUser() {
+	fetch(`${fireBaseURL}currentUser/${jsonEXT}`, {
+		method: "PUT",
+		body: JSON.stringify({
+			username: "",
+			firstName: "",
+			lastName: "",
+			password: "",
+			profilePic: "",
+		}),
+	});
+}

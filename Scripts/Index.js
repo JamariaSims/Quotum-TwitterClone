@@ -1,9 +1,9 @@
 const form = document.getElementById("Form");
 form.addEventListener("submit", (event) => {
 	event.preventDefault();
-	let username = document.getElementById("username").value;
+	const username = document.getElementById("username").value;
 	const password = document.getElementById("password").value;
-	formValidation(username, password);
+	attemptLogin(`@${username}`, password);
 });
 const formValidation = (username, password) => {
 	username = username.toLowerCase();

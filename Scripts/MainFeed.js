@@ -1,4 +1,12 @@
 getCurrentUser();
+const logoutBtn = document.getElementById(`Btn-Logout`);
+logoutBtn.addEventListener("click", (event) => {
+	event.preventDefault();
+	logoutUser();
+	setTimeout(() => {
+		window.location.replace("/Index.html");
+	}, 1000);
+});
 document.getElementById("ProfileHeader").innerHTML = `
 <img
 src="../Assets/BlankProfilePicture.png"
