@@ -198,6 +198,10 @@ body {
 	padding: 0.5rem 1rem;
 	border-radius: 5rem;
 }
+.MiddlePage .PostsContainer {
+	display: flex;
+	flex-direction: column-reverse;
+}
 .MiddlePage .PostContainer {
 	display: flex;
 	flex-direction: row;

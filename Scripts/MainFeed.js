@@ -1,95 +1,140 @@
-const targetUser = getCurrentUser();
-const currentPost = getPosts();
+//SET CURRENT USER
+let currentUser = {
+	username: "",
+	firstName: "",
+	lastName: "",
+};
+fetch(`${fireBaseURL}currentUser/${jsonEXT}`)
+	.then((res) => {
+		return res.json();
+	})
+	.then((data) => {
+		currentUser["username"] = data.username;
+		currentUser["firstName"] = data.firstName;
+		currentUser["lastName"] = data.lastName;
+	});
+//LOGOUT
 const logoutBtn = document.getElementById(`Btn-Logout`);
 logoutBtn.addEventListener("click", (event) => {
 	event.preventDefault();
-	logoutUser();
-	setTimeout(() => {
+	fetch(`${fireBaseURL}currentUser/${jsonEXT}`, {
+		method: "PUT",
+		body: JSON.stringify({
+			username: "",
+			firstName: "",
+			lastName: "",
+			password: "",
+			profilePic: "",
+		}),
+	}).then(() => {
 		window.location.replace("/Index.html");
-	}, 1000);
+	});
 });
-let username = null;
-let firstName = null;
-let lastName = null;
-let profileBio = null;
-let profilePic = null;
-let followers = null;
-let following = null;
-targetUser.then((res) => {
-	username = res.username;
-	firstName = res.firstName;
-	lastName = res.lastName;
-	profileBio = res.profileBio;
-	profilePic = res.profilePic;
-	followers = res.followers;
-	following = res.following;
-	document.getElementById("ProfileHeader").innerHTML = `
+//HEADER
+fetch(`${fireBaseURL}currentUser/${jsonEXT}`)
+	.then((res) => {
+		return res.json();
+	})
+	.then((data) => {
+		document.getElementById("ProfileHeader").innerHTML = `
                 <img
                 src="../Assets/BlankProfilePicture.png"
                 alt="Profile Picture"
                 width="200px"
                 />
-                <h1 id="INPUT-name">${firstName} ${lastName}</h1>
-                <p id="Username">${username}</p>
+                <h1 id="INPUT-name">${data.firstName} ${data.lastName}</h1>
+                <p id="Username">${data.username}</p>
                 <p>
-        ${profileBio}
+        ${data.profileBio}
                 </p>
                 <section>
                 <div>
-                        <p>${following.length || 0}</p>
+                        <p>${data.following.length || 0}</p>
                         <p>Following</p>
                 </div>
                 <div>
-                        <p>${followers.length || 0}</p>
+                        <p>${data.followers.length || 0}</p>
                         <p>Followers</p>
                 </div>
                 </section>
                                 `;
-});
-currentPost.then((res) => {
-	for (post of res) {
-		console.log(post);
-		document.getElementById(
-			"PostsContainer"
-		).innerHTML += `<div class="PostContainer">
-					<img
-						src="../Assets/BlankProfilePicture.png"
-						alt="Profile Picture"
-						width="78px"
-						class="PostPic"
-					/>
-					<div class="StatusInfo">
-						<div class="HeaderInfo">
-							<h2>${post.firstName} ${post.lastName}</h2>
-							<p>${post.createdBy}</p>
-						</div>
-						<p class="PostCreated">${post.timeStamp}</p>
-						<p class="PostText">
-${post.post}
-						</p>
-						<div class="PostActions">
-							<div class="PostLikes">
-								<img
-									src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-									alt="Profile Picture"
-									width="78px"
-								/>
-								<img
-									src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-									alt="Profile Picture"
-									width="78px"
-								/>
-								<p>${post.likes.length}</p>
-							</div>
-							<p>${post.comments.length} Comments</p>
-						</div>
+	});
+//DISPLAY POSTS
+displayPosts();
+function displayPosts() {
+	document.getElementById("PostsContainer").innerHTML = ``;
+	fetch(`${fireBaseURL}Posts/${jsonEXT}`)
+		.then((res) => {
+			return res.json();
+		})
+		.then((data) => {
+			if (!data) {
+				return;
+			}
+			Object.values(data).forEach((post) => {
+				document.getElementById(
+					"PostsContainer"
+				).innerHTML += `<div class="PostContainer">
+                        <img
+                                src="../Assets/BlankProfilePicture.png"
+                                alt="Profile Picture"
+                                width="78px"
+                                class="PostPic"
+                        />
+                        <div class="StatusInfo">
+                                <div class="HeaderInfo">
+                                        <h2>${post.firstName} ${post.lastName}</h2>
+                                        <p>${post.createdBy}</p>
+                                </div>
+                                <p class="PostCreated">${post.timeStamp}</p>
+                                <p class="PostText">
+                ${post.post}
+                                </p>
+                                <div class="PostActions">
+                                        <div class="PostLikes">
+                                                <img
+                                                        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                                                        alt="Profile Picture"
+                                                        width="78px"
+                                                />
+                                                <img
+                                                        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                                                        alt="Profile Picture"
+                                                        width="78px"
+                                                />
+                                                <p>${post.likes.length} Likes</p>
+                                        </div>
+                                        <p>${post.comments.length} Comments</p>
+                                </div>
+                
+                                <nav class="PostNav">
+                                        <button>Comment</button>
+                                        <button>Retweet</button>
+                                        <button>Like</button>
+                                </nav>
+                        </div>
+                </div>`;
+			});
+		});
+}
 
-						<nav class="PostNav">
-							<button>Comment</button>
-							<button>Retweet</button>
-							<button>Like</button>
-						</nav>
-					</div>
-				</div>`;
-	}
-});
+//POST TWEETS
+function addPost(event) {
+	event.preventDefault();
+	const statusCreateBtn = document.getElementById("BTN-postStatus");
+	event.preventDefault();
+	const currentTime = `${new Date().toUTCString()}`;
+	fetch(`${fireBaseURL}Posts/${jsonEXT}`, {
+		method: "POST",
+		body: JSON.stringify({
+			firstName: currentUser["firstName"],
+			lastName: currentUser["lastName"],
+			createdBy: currentUser["username"],
+			timeStamp: currentTime,
+			post: statusCreateBtn.value,
+			likes: [currentUser["username"]],
+			comments: [currentUser["username"]],
+		}),
+	});
+	displayPosts();
+}
