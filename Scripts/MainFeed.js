@@ -144,5 +144,6 @@ function addPost(event) {
 			post: statusCreateBtn.value,
 		}),
 	});
+	statusCreateBtn.value = "";
 	displayPosts();
 }
