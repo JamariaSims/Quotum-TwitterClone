@@ -1,0 +1,38 @@
+{
+	"currentUser": {
+		"username": "",
+		"firstName": "",
+		"lastName": "",
+		"password": "",
+		"profilePic": "../Assets/BlankProfilePicture.png"
+	},
+	"Users": {
+		"@johndoe": {
+			"firstName": "John",
+			"lastName": "Doe",
+			"password": "12345678",
+			"profilePic": "../Assets/BlankProfilePicture.png"
+		},
+		"@jamariasims": {
+			"firstName": "Jamaria",
+			"lastName": "Sims",
+			"password": "12345678",
+			"profilePic": "../Assets/BlankProfilePicture.png"
+		},
+		"@rapgorilla011": {
+			"firstName": "Gloria",
+			"lastName": "Woods",
+			"password": "12345678",
+			"profilePic": "../Assets/BlankProfilePicture.png"
+		}
+	},
+	"Posts": [
+		{
+			"firstName": "Jamaria",
+			"lastName:": "Sims",
+			"createdBy": "@jamariasims",
+			"timeStamp": "Time",
+			"post": "If you look at what you have in life, you'll always have more. If you look at what you don't have in life, you'll never have enough."
+		}
+	]
+}

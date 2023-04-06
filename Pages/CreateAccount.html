@@ -17,22 +17,26 @@
 			</section>
 			<section class="MainRight-Container">
 				<h2>Create Account</h2>
-				<form action="/Pages/MainFeed.html">
+				<form id="form">
 					<label>First Name</label>
 					<br />
-					<input type="text" />
+					<input name="firstName" id="firstName" type="text" />
 					<br />
 					<label>Last Name</label>
 					<br />
-					<input type="text" />
+					<input name="lastName" id="lastName" type="text" />
 					<br />
-					<label>Email</label>
+					<label>Username</label>
 					<br />
-					<input type="email" />
+					<input name="username" id="username" type="text" />
 					<br />
 					<label>Password</label>
 					<br />
-					<input type="text" />
+					<input name="password" id="password" type="text" />
+					<br />
+					<label>Confirm Password</label>
+					<br />
+					<input name="confirmPassword" id="confirmPassword" type="text" />
 					<br />
 					<button id="BTN-Create" type="submit">CREATE</button>
 				</form>
@@ -45,4 +49,5 @@
 		</section>
 	</body>
 	<script src="/Scripts/CreateAccount.js"></script>
+	<script src="/Scripts/Utils.js"></script>
 </html>

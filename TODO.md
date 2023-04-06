@@ -17,14 +17,21 @@
 5. Maybe add a model or span for username taken somewhere
 
 # Main Feed
+
 Level: 999999 - extreme hard mode xD
+
+Convert:
 
 - Profile Component
 - Who to follow Component
 - Status Component
 - Tweet/Connect Components in Tweets/Connects Component
 - Hot Topic Components in Hot Topic Component
+
 # Update The Dom
+
+1. Send it to database
+2. Rerender tweets
 
 ## Append Any Changes
 
@@ -32,3 +39,14 @@ Level: 999999 - extreme hard mode xD
 2. Read: Login/Main Feed
 3. Update: Main Feed
 4. Delete: Main Feed
+
+Header:
+First Name & Last Name
+Username
+Bio
+Following = 
+Followers
+
+Who To Follow:
+New users
+
