@@ -2,7 +2,6 @@
 	padding: 0;
 	margin: 0;
 	font-family: "Segoe UI", Arial, sans-serif;
-	line-height: 1.7;
 }
 .App {
 	display: flex;
@@ -114,4 +113,14 @@
 	padding-inline: 150px;
 	padding-block: 20px;
 	text-align: center;
+	animation: slidein 200ms;
+}
+@keyframes slidein {
+	from {
+		transform: translateY(40px);
+		opacity: 0;
+	}
+	to {
+		display: block;
+	}
 }

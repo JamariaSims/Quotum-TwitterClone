@@ -11,21 +11,16 @@ form.addEventListener("submit", (event) => {
 		profileBio: "No bio yet....",
 		profilePic: "../Assets/BlankProfilePicture.png",
 	};
+	userData.username = userData.username.toLowerCase();
 	//Check if username is already taken
 	if (
-		isUsernameTaken(userData) ||
-		containsInvalidChars(userData.username) ||
 		containsInvalidChars(userData.firstName) ||
-		containsInvalidChars(userData.lastName)
+		containsInvalidChars(userData.lastName) ||
+		containsInvalidChars(userData.username)
 	) {
 		return resetInputValues();
 	}
-	userData.username = userData.username.toLowerCase();
 	userData.username = "@" + userData.username;
-	postToUsers(userData);
-	postCurrentUser(userData);
-});
-function isUsernameTaken(userData) {
 	fetch(`${fireBaseURL}Users/${jsonEXT}`)
 		.then((res) => {
 			return res.json();
@@ -33,13 +28,14 @@ function isUsernameTaken(userData) {
 		.then((data) => {
 			for (const [key, USER] of Object.entries(data)) {
 				if (USER.username === userData.username) {
-					return true;
+					return resetInputValues();
 				}
 			}
-			return false;
+			postToUsers(userData);
+			postCurrentUser(userData);
 		})
 		.catch((err) => console.log(err));
-}
+});
 function postToUsers(userData) {
 	fetch(`${fireBaseURL}Users${jsonEXT}`, {
 		method: "POST",
@@ -84,5 +80,8 @@ const resetInputValues = () => {
 	document.getElementById("lastName").value = "";
 	document.getElementById("username").value = "";
 	document.getElementById("password").value = "";
-	return document.getElementById("ERROR-Login").classList.remove("hide");
+	document.getElementById("ERROR-Login").classList.remove("hide");
+	setTimeout(() => {
+		return document.getElementById("ERROR-Login").classList.add("hide");
+	}, 3000);
 };
