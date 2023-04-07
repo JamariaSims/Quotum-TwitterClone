@@ -65,9 +65,6 @@ function displayPosts() {
 			return res.json();
 		})
 		.then((data) => {
-			if (!data) {
-				return;
-			}
 			//DISPLAY POSTS
 			for (const [key, post] of Object.entries(data)) {
 				document.getElementById("PostsContainer").innerHTML += `
