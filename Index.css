@@ -18,6 +18,9 @@
 	width: 100%;
 	font-size: 16px;
 }
+.hide {
+	display: none;
+}
 
 .MainLeft-Container {
 	display: flex;
@@ -113,8 +116,18 @@ form a {
 .BottomForm-Container a:hover {
 	background-color: #364451;
 	color: white;
+	transition: all 0.3s ease-in-out;
 }
 .BottomForm-Container span {
 	font-size: 1rem;
 	font-weight: bold;
+}
+.MainRight-Container span {
+	font-size: 1rem;
+	color: red;
+	font-weight: bold;
+	margin: 0% auto;
+	margin-top: 60px;
+	background: yellow;
+	padding: 50px;
 }
