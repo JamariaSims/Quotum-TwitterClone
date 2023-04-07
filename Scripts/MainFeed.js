@@ -200,7 +200,7 @@ function addPost(event) {
 		.catch((err) => console.log(err));
 }
 //DELETE TWEET
-function deletePost(event, key) {
+function deletePost(event) {
 	event.preventDefault();
 	fetch(`${fireBaseURL}Posts/${event.target.name}/${jsonEXT}`, {
 		method: "DELETE",
@@ -233,9 +233,8 @@ function saveEdit(event) {
 			timeStamp: currentTime,
 		}),
 	})
-		.then((res) => res.json())
-		.then((data) => {
-			displayPosts();
+		.then(() => {
+			window.location.replace("/Pages/MainFeed.html");
 		})
 		.catch((err) => console.log(err));
 }
