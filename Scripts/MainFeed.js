@@ -1,5 +1,7 @@
 let fireBaseURL = "https://connectx-1fd24-default-rtdb.firebaseio.com/";
 let jsonEXT = ".json";
+
+const allUsers = new Set();
 //FETCHING CURRENT USER
 let currentUser = {};
 fetch(`${fireBaseURL}currentUser/${jsonEXT}`)
@@ -70,6 +72,7 @@ function displayPosts() {
 			}
 			//DISPLAY POSTS
 			for (const [key, post] of Object.entries(data)) {
+				allUsers.add(post.createdBy);
 				document.getElementById("PostsContainer").innerHTML += `
 				<div class="flex-down">
 				<div class="PostContainer" id=${key}>
@@ -150,7 +153,36 @@ function displayPosts() {
 		})
 		.catch((err) => console.log(err));
 }
-
+document.getElementById("WhoToFollow").innerHTML = `
+<h2>Who to follow</h2>
+<ol class="FollowList">
+	<li>
+		<img
+			src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+			alt="Profile Picture"
+			width="78px"
+		/>
+		<div>
+			<p>John Doe</p>
+			<span>@JohnDoe</span>
+		</div>
+		<button>Follow</button>
+	</li>
+	<li>
+		<img
+			src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+			alt="Profile Picture"
+			width="78px"
+		/>
+		<div>
+			<p>John Doe</p>
+			<span>@JohnDoe</span>
+		</div>
+		<button>Follow</button>
+	</li>
+</ol>
+<p class="Extra-ShowMore">Show More</p>
+`;
 //POST TWEETS
 function addPost(event) {
 	event.preventDefault();
