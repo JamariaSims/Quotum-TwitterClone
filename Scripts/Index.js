@@ -13,7 +13,6 @@ form.addEventListener("submit", (event) => {
 		})
 		.then((data) => {
 			for (const [key, USER] of Object.entries(data)) {
-				console.log(USER.username);
 				if (USER.username === username && USER.password === password) {
 					fetch(`${fireBaseURL}currentUser/${jsonEXT}`, {
 						method: "PUT",
@@ -33,7 +32,8 @@ form.addEventListener("submit", (event) => {
 						})
 						.then(() => {
 							window.location.replace("/Pages/MainFeed.html");
-						});
+						})
+						.catch((err) => console.log(err));
 				}
 				resetInputValues();
 			}

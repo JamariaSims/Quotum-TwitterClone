@@ -37,7 +37,8 @@ function isUsernameTaken(userData) {
 				}
 			}
 			return false;
-		});
+		})
+		.catch((err) => console.log(err));
 }
 function postToUsers(userData) {
 	fetch(`${fireBaseURL}Users${jsonEXT}`, {
@@ -52,7 +53,7 @@ function postToUsers(userData) {
 			followers: null,
 			following: null,
 		}),
-	});
+	}).catch((err) => console.log(err));
 }
 function postCurrentUser(userData) {
 	fetch(`${fireBaseURL}currentUser/${jsonEXT}`, {
@@ -67,9 +68,11 @@ function postCurrentUser(userData) {
 			followers: null,
 			following: null,
 		}),
-	}).then(() => {
-		window.location.replace("/Pages/MainFeed.html");
-	});
+	})
+		.then(() => {
+			window.location.replace("/Pages/MainFeed.html");
+		})
+		.catch((err) => console.log(err));
 }
 //Check for white spaces and special characters
 function containsInvalidChars(data) {

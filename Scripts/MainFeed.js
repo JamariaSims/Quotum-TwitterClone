@@ -11,7 +11,6 @@ fetch(`${fireBaseURL}currentUser/${jsonEXT}`)
 		currentUser.lastName = data.lastName;
 		currentUser.username = data.username;
 		currentUser.profilePic = data.profilePic;
-		console.log(currentUser);
 		//PROFILE HEADER
 		document.getElementById("ProfileHeader").innerHTML = `
 			<img
@@ -56,11 +55,11 @@ fetch(`${fireBaseURL}currentUser/${jsonEXT}`)
 			</button>
 		</nav>
 	</div>`;
-	});
+	})
+	.catch((err) => console.log(err));
 //DISPLAY POSTS
 displayPosts();
 function displayPosts() {
-	document.getElementById("PostsContainer").innerHTML = ``;
 	fetch(`${fireBaseURL}Posts/${jsonEXT}`)
 		.then((res) => {
 			return res.json();
@@ -69,6 +68,7 @@ function displayPosts() {
 			if (!data) {
 				return;
 			}
+			//DISPLAY POSTS
 			for (const [key, post] of Object.entries(data)) {
 				document.getElementById("PostsContainer").innerHTML += `
 				<div class="flex-down">
@@ -121,7 +121,7 @@ function displayPosts() {
 	
 				</div>
 			</div>
-
+	
 			<div class="PostEditContainer hide" id=PostEditContainer${key}>
 			<img
 				src="../Assets/BlankProfilePicture.png"
@@ -147,7 +147,8 @@ function displayPosts() {
 		</div>
 			</div>`;
 			}
-		});
+		})
+		.catch((err) => console.log(err));
 }
 
 //POST TWEETS
@@ -165,10 +166,12 @@ function addPost(event) {
 			timeStamp: currentTime,
 			post: statusCreateBtn.value,
 		}),
-	}).then(() => {
-		statusCreateBtn.value = "";
-		displayPosts();
-	});
+	})
+		.then(() => {
+			statusCreateBtn.value = "";
+			displayPosts();
+		})
+		.catch((err) => console.log(err));
 }
 //DELETE TWEET
 function deletePost(event, key) {
@@ -179,7 +182,8 @@ function deletePost(event, key) {
 		.then((res) => res.json())
 		.then((data) => {
 			displayPosts();
-		});
+		})
+		.catch((err) => console.log(err));
 }
 //EDIT TWEET
 function editPost(event) {
@@ -229,7 +233,9 @@ logoutBtn.addEventListener("click", (event) => {
 			password: "",
 			profilePic: "",
 		}),
-	}).then(() => {
-		window.location.replace("/Index.html");
-	});
+	})
+		.then(() => {
+			window.location.replace("/Index.html");
+		})
+		.catch((err) => console.log(err));
 });
