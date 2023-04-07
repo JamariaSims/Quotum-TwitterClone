@@ -34,6 +34,27 @@ fetch(`${fireBaseURL}currentUser/${jsonEXT}`)
 			</div>
 			</section>
 					`;
+		document.getElementById("Post-StatusForm").innerHTML += `				<img
+		src="${data.profilePic}"
+		alt="Profile Picture"
+		width="78px"
+	/>
+	<div>
+		<input
+			id="BTN-postStatus"
+			type="text"
+			placeholder="What's on your mind?"
+		/>
+		<nav>
+			<div>
+				<button>Photo</button>
+				<button>Video</button>
+			</div>
+			<button onclick="addPost(event,currentUser)" type="button">
+				Connect
+			</button>
+		</nav>
+	</div>`;
 	});
 //DISPLAY POSTS
 displayPosts();
