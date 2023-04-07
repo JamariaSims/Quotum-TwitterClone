@@ -116,10 +116,15 @@ function displayPosts() {
 						<button>Retweet</button>
 						<button>Like</button>
 					</nav>
-					<nav>
+					${
+						currentUser.username === post.createdBy
+							? `				<nav>
 					<button id="BTN-Edit" name=${key} onClick=editPost(event)>Edit</button>
 					<button id="BTN-Delete" name=${key} onClick=deletePost(event)>Delete</button>
-					</nav>
+					</nav>`
+							: `<div></div>`
+					}
+	
 				</div>
 			</div>
 
