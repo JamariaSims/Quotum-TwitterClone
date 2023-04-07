@@ -11,6 +11,10 @@ fetch(`${fireBaseURL}currentUser/${jsonEXT}`)
 		currentUser.lastName = data.lastName;
 		currentUser.username = data.username;
 		currentUser.profilePic = data.profilePic;
+		currentUser.profileBio = data.profileBio;
+		return currentUser;
+	})
+	.then((data) => {
 		//PROFILE HEADER
 		document.getElementById("ProfileHeader").innerHTML = `
 			<img
@@ -50,7 +54,7 @@ fetch(`${fireBaseURL}currentUser/${jsonEXT}`)
 				<button>Photo</button>
 				<button>Video</button>
 			</div>
-			<button onclick="addPost(event,currentUser)" type="button">
+			<button id="BTN-AddPost" onclick="addPost(event,currentUser)" type="button">
 				Connect
 			</button>
 		</nav>
@@ -58,8 +62,149 @@ fetch(`${fireBaseURL}currentUser/${jsonEXT}`)
 	})
 	.catch((err) => console.log(err));
 //DISPLAY POSTS
-displayPosts();
-function displayPosts() {
+updateDisplay();
+document.getElementById("WhoToFollow").innerHTML = `
+<h2>Who to follow</h2>
+<ol class="FollowList">
+	<li>
+		<img
+			src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+			alt="Profile Picture"
+			width="78px"
+		/>
+		<div>
+			<p>John Doe</p>
+			<span>@JohnDoe</span>
+		</div>
+		<button>Follow</button>
+	</li>
+	<li>
+		<img
+			src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+			alt="Profile Picture"
+			width="78px"
+		/>
+		<div>
+			<p>John Doe</p>
+			<span>@JohnDoe</span>
+		</div>
+		<button>Follow</button>
+	</li>
+</ol>
+<p class="Extra-ShowMore">Show More</p>
+`;
+//POST TWEETS
+function addPost(event) {
+	event.preventDefault();
+	const postStatus = document.getElementById("BTN-postStatus");
+	if (postStatus.value !== "") {
+		document.getElementById("BTN-AddPost").classList.toggle("hide");
+		const statusCreateBtn = document.getElementById("BTN-postStatus");
+		const currentTime = `${new Date().toUTCString()}`;
+		fetch(`${fireBaseURL}Posts/${jsonEXT}`, {
+			method: "POST",
+			body: JSON.stringify({
+				firstName: currentUser["firstName"],
+				lastName: currentUser["lastName"],
+				createdBy: currentUser["username"],
+				profilePic: currentUser["profilePic"],
+				timeStamp: currentTime,
+				post: statusCreateBtn.value,
+			}),
+		})
+			.then(() => {
+				statusCreateBtn.value = "";
+				updateDisplay();
+				document.getElementById("BTN-AddPost").classList.toggle("hide");
+			})
+			.catch((err) => console.log(err));
+	}
+	return;
+}
+//DELETE TWEET
+function deletePost(event) {
+	event.preventDefault();
+	const editBtn = document.querySelectorAll("#BTN-Delete");
+	editBtn.forEach((btn) => {
+		btn.classList.toggle("hide");
+	});
+	fetch(`${fireBaseURL}Posts/${event.target.name}/${jsonEXT}`, {
+		method: "DELETE",
+	})
+		.then(() => {
+			updateDisplay();
+			editBtn.forEach((btn) => {
+				btn.classList.toggle("hide");
+			});
+		})
+		.catch((err) => console.log(err));
+}
+//EDIT TWEET
+function editPost(event) {
+	event.preventDefault();
+	const currentEditPost = document.getElementById(
+		`PostEditContainer${event.target.name}`
+	);
+	currentEditPost.classList.toggle("hide");
+}
+
+function saveEdit(event) {
+	event.preventDefault();
+	const saveEditBtn = document.querySelectorAll("#BTN-Edit");
+	saveEditBtn.forEach((btn) => {
+		btn.classList.toggle("hide");
+	});
+	const currentPost = document.getElementById(
+		`BTN-postStatusEdit${event.target.name}`
+	);
+	const currentTime = `${new Date().toUTCString()}`;
+	fetch(`${fireBaseURL}Posts/${event.target.name}/${jsonEXT}`, {
+		method: "PATCH",
+		body: JSON.stringify({
+			post: currentPost.value,
+			timeStamp: currentTime,
+		}),
+	})
+		.then(() => {
+			updateDisplay();
+			saveEditBtn.forEach((btn) => {
+				btn.classList.toggle("hide");
+			});
+		})
+		.catch((err) => console.log(err));
+}
+function cancelEdit(event) {
+	event.preventDefault();
+	const currentEditPost = document.getElementById(
+		`PostEditContainer${event.target.name}`
+	);
+	currentEditPost.classList.toggle("hide");
+}
+//LOGOUT
+const logoutBtn = document.getElementById(`Btn-Logout`);
+logoutBtn.addEventListener("click", (event) => {
+	event.preventDefault();
+	fetch(`${fireBaseURL}currentUser/${jsonEXT}`, {
+		method: "PUT",
+		body: JSON.stringify({
+			username: "",
+			firstName: "",
+			lastName: "",
+			password: "",
+			profilePic: "",
+		}),
+	})
+		.then(() => {
+			window.location.replace("/Index.html");
+		})
+		.catch((err) => console.log(err));
+});
+
+function updateDisplay() {
+	//RESET POSTS
+	const postsContainer = document.getElementById("PostsContainer");
+	postsContainer.innerHTML = "";
+	//GET POSTS
 	fetch(`${fireBaseURL}Posts/${jsonEXT}`)
 		.then((res) => {
 			return res.json();
@@ -67,7 +212,7 @@ function displayPosts() {
 		.then((data) => {
 			//DISPLAY POSTS
 			for (const [key, post] of Object.entries(data)) {
-				document.getElementById("PostsContainer").innerHTML += `
+				postsContainer.innerHTML += `
 				<div class="flex-down">
 				<div class="PostContainer" id=${key}>
 				<img
@@ -147,120 +292,3 @@ function displayPosts() {
 		})
 		.catch((err) => console.log(err));
 }
-document.getElementById("WhoToFollow").innerHTML = `
-<h2>Who to follow</h2>
-<ol class="FollowList">
-	<li>
-		<img
-			src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-			alt="Profile Picture"
-			width="78px"
-		/>
-		<div>
-			<p>John Doe</p>
-			<span>@JohnDoe</span>
-		</div>
-		<button>Follow</button>
-	</li>
-	<li>
-		<img
-			src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-			alt="Profile Picture"
-			width="78px"
-		/>
-		<div>
-			<p>John Doe</p>
-			<span>@JohnDoe</span>
-		</div>
-		<button>Follow</button>
-	</li>
-</ol>
-<p class="Extra-ShowMore">Show More</p>
-`;
-//POST TWEETS
-function addPost(event) {
-	event.preventDefault();
-	const statusCreateBtn = document.getElementById("BTN-postStatus");
-	const currentTime = `${new Date().toUTCString()}`;
-	fetch(`${fireBaseURL}Posts/${jsonEXT}`, {
-		method: "POST",
-		body: JSON.stringify({
-			firstName: currentUser["firstName"],
-			lastName: currentUser["lastName"],
-			createdBy: currentUser["username"],
-			profilePic: currentUser["profilePic"],
-			timeStamp: currentTime,
-			post: statusCreateBtn.value,
-		}),
-	})
-		.then(() => {
-			statusCreateBtn.value = "";
-			displayPosts();
-		})
-		.catch((err) => console.log(err));
-}
-//DELETE TWEET
-function deletePost(event) {
-	event.preventDefault();
-	fetch(`${fireBaseURL}Posts/${event.target.name}/${jsonEXT}`, {
-		method: "DELETE",
-	})
-		.then((res) => res.json())
-		.then((data) => {
-			displayPosts();
-		})
-		.catch((err) => console.log(err));
-}
-//EDIT TWEET
-function editPost(event) {
-	event.preventDefault();
-	const currentEditPost = document.getElementById(
-		`PostEditContainer${event.target.name}`
-	);
-	currentEditPost.classList.toggle("hide");
-}
-
-function saveEdit(event) {
-	event.preventDefault();
-	const currentPost = document.getElementById(
-		`BTN-postStatusEdit${event.target.name}`
-	);
-	const currentTime = `${new Date().toUTCString()}`;
-	fetch(`${fireBaseURL}Posts/${event.target.name}/${jsonEXT}`, {
-		method: "PATCH",
-		body: JSON.stringify({
-			post: currentPost.value,
-			timeStamp: currentTime,
-		}),
-	})
-		.then(() => {
-			window.location.replace("/Pages/MainFeed.html");
-		})
-		.catch((err) => console.log(err));
-}
-function cancelEdit(event) {
-	event.preventDefault();
-	const currentEditPost = document.getElementById(
-		`PostEditContainer${event.target.name}`
-	);
-	currentEditPost.classList.toggle("hide");
-}
-//LOGOUT
-const logoutBtn = document.getElementById(`Btn-Logout`);
-logoutBtn.addEventListener("click", (event) => {
-	event.preventDefault();
-	fetch(`${fireBaseURL}currentUser/${jsonEXT}`, {
-		method: "PUT",
-		body: JSON.stringify({
-			username: "",
-			firstName: "",
-			lastName: "",
-			password: "",
-			profilePic: "",
-		}),
-	})
-		.then(() => {
-			window.location.replace("/Index.html");
-		})
-		.catch((err) => console.log(err));
-});
