@@ -113,7 +113,7 @@
 	padding-inline: 150px;
 	padding-block: 20px;
 	text-align: center;
-	animation: slidein 200ms;
+	animation: slidein 300ms;
 }
 @keyframes slidein {
 	from {
