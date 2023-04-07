@@ -220,6 +220,9 @@ body {
 	margin: 0% auto;
 	margin-top: 1%;
 }
+.MiddlePage .PostCreated {
+	margin-bottom: 0.5rem;
+}
 .MiddlePage .PostContainer .PostPic {
 	width: 5rem;
 	height: 5rem;
@@ -250,10 +253,11 @@ body {
 	font-weight: 600;
 }
 .MiddlePage .PostContainer .StatusInfo .PostText {
-	display: flex;
-	justify-content: center;
-	text-align: left;
+	text-align: center;
 	margin: 0% auto;
+	background: var(--Color4);
+	padding-block: 0.5rem;
+	width: 40rem;
 }
 .MiddlePage .PostContainer .StatusInfo img {
 	width: 2rem;
@@ -369,6 +373,11 @@ body {
 	border: none;
 	color: var(--Color6);
 	transition: all 0.2s ease-in-out;
+}
+#ICON-Home {
+	color: var(--Color7);
+	top: 5%;
+	left: 30.25%;
 }
 .PostEditContainer {
 	width: 90%;

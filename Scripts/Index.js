@@ -27,16 +27,14 @@ form.addEventListener("submit", (event) => {
 							following: USER.following || null,
 						}),
 					})
-						.then((res) => {
-							return res.json;
-						})
 						.then(() => {
 							window.location.replace("/Pages/MainFeed.html");
 						})
 						.catch((err) => console.log(err));
+					return;
 				}
-				resetInputValues();
 			}
+			resetInputValues();
 		});
 });
 const resetInputValues = () => {
