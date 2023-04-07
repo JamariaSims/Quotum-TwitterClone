@@ -60,7 +60,7 @@ fetch(`${fireBaseURL}currentUser/${jsonEXT}`)
 		</nav>
 	</div>`;
 	})
-	.catch((err) => console.log(err));
+	.catch((err) => window.location.replace("../index.html"));
 //DISPLAY POSTS
 updateDisplay();
 document.getElementById("WhoToFollow").innerHTML = `
