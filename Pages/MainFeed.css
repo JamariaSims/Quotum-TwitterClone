@@ -31,7 +31,7 @@ body {
 	margin: 0% auto;
 	text-align: center;
 }
-.hide {
+.hide * {
 	display: none;
 }
 .flex-down {

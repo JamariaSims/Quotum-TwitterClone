@@ -123,7 +123,7 @@ function displayPosts() {
 				</div>
 			</div>
 
-			<div class="PostContainer" id=${key}>
+			<div class="PostEditContainer hide" id=PostEditContainer${key}>
 			<img
 				src="../Assets/BlankProfilePicture.png"
 				alt="Profile Picture"
@@ -136,13 +136,13 @@ function displayPosts() {
 					<p>${post.createdBy}</p>
 				</div>
 				<input
-				id="BTN-postStatusEdit"
+				id="BTN-postStatusEdit${key}"
 				type="text"
-				placeholder=${post.post}
+				value="${post.post}"
 			/>
 				<nav class="PostNav">
-					<button>Cancel</button>
-					<button>Save</button>
+					<button id="BTN-postCancelEdit${key}" name="${key}" onClick="cancelEdit(event)">Cancel</button>
+					<button id="BTN-postSaveEdit${key}" name="${key}" onClick="saveEdit(event)">Save</button>
 				</nav>
 			</div>
 		</div>
@@ -165,9 +165,10 @@ function addPost(event) {
 			timeStamp: currentTime,
 			post: statusCreateBtn.value,
 		}),
+	}).then(() => {
+		statusCreateBtn.value = "";
+		displayPosts();
 	});
-	statusCreateBtn.value = "";
-	displayPosts();
 }
 //DELETE TWEET
 function deletePost(event, key) {
@@ -183,8 +184,35 @@ function deletePost(event, key) {
 //EDIT TWEET
 function editPost(event) {
 	event.preventDefault();
-	const currentPost = document.getElementById(event.target.name);
-	console.log(currentPost);
-	const inputEdit = document.getElementById("BTN-postStatusEdit");
-	inputEdit.classList.toggle("hide");
+	const currentEditPost = document.getElementById(
+		`PostEditContainer${event.target.name}`
+	);
+	currentEditPost.classList.toggle("hide");
+}
+
+function saveEdit(event) {
+	event.preventDefault();
+	const currentPost = document.getElementById(
+		`BTN-postStatusEdit${event.target.name}`
+	);
+	const currentTime = `${new Date().toUTCString()}`;
+	fetch(`${fireBaseURL}Posts/${event.target.name}/${jsonEXT}`, {
+		method: "PATCH",
+		body: JSON.stringify({
+			post: currentPost.value,
+			timeStamp: currentTime,
+		}),
+	})
+		.then((res) => res.json())
+		.then((data) => {
+			displayPosts();
+		})
+		.catch((err) => console.log(err));
+}
+function cancelEdit(event) {
+	event.preventDefault();
+	const currentEditPost = document.getElementById(
+		`PostEditContainer${event.target.name}`
+	);
+	currentEditPost.classList.toggle("hide");
 }
