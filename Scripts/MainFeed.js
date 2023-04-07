@@ -124,6 +124,7 @@ function addPost(event) {
 //DELETE TWEET
 function deletePost(event) {
 	event.preventDefault();
+	document.getElementById(`Post-StatusForm`).classList.remove("hide");
 	const editBtn = document.querySelectorAll("#BTN-Delete");
 	editBtn.forEach((btn) => {
 		btn.classList.toggle("hide");
