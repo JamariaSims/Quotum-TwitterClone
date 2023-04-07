@@ -146,10 +146,13 @@ function editPost(event) {
 		`PostEditContainer${event.target.name}`
 	);
 	currentEditPost.classList.toggle("hide");
+	document.getElementById("BTN-postStatus").value = "";
+	document.getElementById(`Post-StatusForm`).classList.toggle("hide");
 }
 
 function saveEdit(event) {
 	event.preventDefault();
+	document.getElementById(`Post-StatusForm`).classList.toggle("hide");
 	const saveEditBtn = document.querySelectorAll("#BTN-Edit");
 	saveEditBtn.forEach((btn) => {
 		btn.classList.toggle("hide");
@@ -175,6 +178,7 @@ function saveEdit(event) {
 }
 function cancelEdit(event) {
 	event.preventDefault();
+	document.getElementById(`Post-StatusForm`).classList.toggle("hide");
 	const currentEditPost = document.getElementById(
 		`PostEditContainer${event.target.name}`
 	);
@@ -225,6 +229,7 @@ function updateDisplay() {
 					<div class="HeaderInfo">
 						<h2>${post.firstName} ${post.lastName}</h2>
 						<p>${post.createdBy}</p>
+					
 					</div>
 					<p class="PostCreated">${post.timeStamp}</p>
 					<p class="PostText">
@@ -252,42 +257,33 @@ function updateDisplay() {
 						<button>Retweet</button>
 						<button>Like</button>
 					</nav>
-					${
-						currentUser.username === post.createdBy
-							? `				<nav>
-					<button id="BTN-Edit" name=${key} onClick=editPost(event)>Edit</button>
-					<button id="BTN-Delete" name=${key} onClick=deletePost(event)>Delete</button>
-					</nav>`
-							: `<div></div>`
-					}
-	
 				</div>
 			</div>
-	
-			<div class="PostEditContainer hide" id=PostEditContainer${key}>
-			<img
-				src="../Assets/BlankProfilePicture.png"
-				alt="Profile Picture"
-				width="78px"
-				class="PostPic"
-			/>
+			${
+				currentUser.username === post.createdBy
+					? `<div class="PostEditContainer hide" id=PostEditContainer${key}>
 			<div class="StatusInfo">
 				<div class="HeaderInfo">
-					<h2>${post.firstName} ${post.lastName}</h2>
-					<p>${post.createdBy}</p>
 				</div>
 				<input
 				id="BTN-postStatusEdit${key}"
 				type="text"
 				value="${post.post}"
 			/>
-				<nav class="PostNav">
+				<nav class="EditPostNav">
 					<button id="BTN-postCancelEdit${key}" name="${key}" onClick="cancelEdit(event)">Cancel</button>
 					<button id="BTN-postSaveEdit${key}" name="${key}" onClick="saveEdit(event)">Save</button>
 				</nav>
 			</div>
 		</div>
-			</div>`;
+		<nav class="ActionButtons">
+		<button id="BTN-Edit" name=${key} onClick=editPost(event)>Edit</button>
+		<button id="BTN-Delete" name=${key} onClick=deletePost(event)>Delete</button>
+		</nav>
+			</div>`
+					: ""
+			}
+			`;
 			}
 		})
 		.catch(

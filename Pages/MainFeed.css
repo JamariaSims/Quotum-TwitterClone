@@ -324,11 +324,117 @@ body {
 	font-weight: 700;
 }
 #Btn-Logout {
-	margin-top: 2.4rem;
-	margin-bottom: 1.5rem;
+	margin-top: 1.9rem;
+	margin-bottom: 1rem;
 	text-decoration: none;
 	color: white;
 	font-weight: 700;
-	background: none;
+	background: var(--Color3);
+	padding-inline: 1rem;
+	padding-block: 0.5rem;
 	border: none;
+	border-radius: 3rem;
+}
+.ActionButtons {
+	display: flex;
+	justify-content: space-around;
+	width: 90%;
+	margin: 0% auto;
+	background: var(--Color2);
+	border: var(--Color1) 1px solid;
+}
+#Btn-Logout:hover {
+	background: var(--Color7);
+	border: none;
+	transition: all 0.2s ease-in-out;
+}
+#BTN-AddPost:hover {
+	background: var(--Color7);
+	border: none;
+	color: var(--Color6);
+	transition: all 0.2s ease-in-out;
+}
+#BTN-Edit,
+#BTN-Delete {
+	color: var(--Color7);
+	padding-inline: 1rem;
+	padding-block: 0.2rem;
+	background: var(--Color6);
+	border: none;
+	font-weight: 700;
+}
+#BTN-Edit:hover,
+#BTN-Delete:hover {
+	background: var(--Color7);
+	border: none;
+	color: var(--Color6);
+	transition: all 0.2s ease-in-out;
+}
+.PostEditContainer {
+	width: 90%;
+	margin: 0% auto;
+	background: var(--Color3);
+	padding-block: 1rem;
+}
+.EditPostNav {
+	display: flex;
+	justify-content: space-between;
+	width: 50%;
+	margin: 0% auto;
+}
+.EditPostNav button {
+	cursor: pointer;
+	font-size: 0.8rem;
+	background: none;
+	color: white;
+	border: white 1px solid;
+	padding: 0.5rem 1rem;
+	border-radius: 5rem;
+}
+.EditPostNav button:hover {
+	background: var(--Color7);
+	border: none;
+	color: var(--Color6);
+	transition: all 0.2s ease-in-out;
+}
+@media screen and (max-width: 1359px) {
+	.RightPage {
+		display: none;
+	}
+	body {
+		width: 70%;
+		display: flex;
+		flex-direction: column;
+		place-items: center;
+		margin: 0% auto;
+	}
+	.LeftPage {
+		width: 100%;
+	}
+	.MiddlePage {
+		width: 100%;
+		overflow: visible;
+		overflow-y: auto;
+		-ms-overflow-style: auto;
+		scrollbar-width: auto;
+	}
+}
+@media screen and (max-width: 700px) {
+	body {
+		font-size: 16px;
+	}
+	#Post-StatusForm {
+		width: 100%;
+		display: block;
+	}
+	#Post-StatusForm img {
+		display: none;
+	}
+	.PostsContainer img {
+		display: none;
+	}
+	.LeftPage {
+		display: block;
+		height: fit-content;
+	}
 }
