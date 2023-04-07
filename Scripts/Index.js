@@ -35,6 +35,7 @@ form.addEventListener("submit", (event) => {
 						})
 						.catch((err) => console.log(err));
 				}
+				resetInputValues();
 			}
 		});
 });
