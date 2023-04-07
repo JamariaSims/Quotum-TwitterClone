@@ -153,29 +153,36 @@ function editPost(event) {
 
 function saveEdit(event) {
 	event.preventDefault();
-	document.getElementById(`Post-StatusForm`).classList.toggle("hide");
-	const saveEditBtn = document.querySelectorAll("#BTN-Edit");
-	saveEditBtn.forEach((btn) => {
-		btn.classList.toggle("hide");
-	});
 	const currentPost = document.getElementById(
 		`BTN-postStatusEdit${event.target.name}`
 	);
-	const currentTime = `${new Date().toUTCString()}`;
-	fetch(`${fireBaseURL}Posts/${event.target.name}/${jsonEXT}`, {
-		method: "PATCH",
-		body: JSON.stringify({
-			post: currentPost.value,
-			timeStamp: currentTime,
-		}),
-	})
-		.then(() => {
-			updateDisplay();
-			saveEditBtn.forEach((btn) => {
-				btn.classList.toggle("hide");
-			});
+	if (currentPost.value !== "") {
+		document.getElementById(`Post-StatusForm`).classList.toggle("hide");
+		const saveEditBtn = document.querySelectorAll("#BTN-Edit");
+		saveEditBtn.forEach((btn) => {
+			btn.classList.toggle("hide");
+		});
+		const currentTime = `${new Date().toUTCString()}`;
+		fetch(`${fireBaseURL}Posts/${event.target.name}/${jsonEXT}`, {
+			method: "PATCH",
+			body: JSON.stringify({
+				post: currentPost.value,
+				timeStamp: currentTime,
+			}),
 		})
-		.catch((err) => console.log(err));
+			.then(() => {
+				updateDisplay();
+				saveEditBtn.forEach((btn) => {
+					btn.classList.toggle("hide");
+				});
+			})
+			.catch((err) => console.log(err));
+	} else {
+		currentPost.value = document
+			.getElementById(event.target.name)
+			.querySelector(".PostText")
+			.innerHTML.trim();
+	}
 }
 function cancelEdit(event) {
 	event.preventDefault();
