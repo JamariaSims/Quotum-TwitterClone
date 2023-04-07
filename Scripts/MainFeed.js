@@ -1,7 +1,5 @@
 let fireBaseURL = "https://connectx-1fd24-default-rtdb.firebaseio.com/";
 let jsonEXT = ".json";
-
-const allUsers = new Set();
 //FETCHING CURRENT USER
 let currentUser = {};
 fetch(`${fireBaseURL}currentUser/${jsonEXT}`)
@@ -72,7 +70,6 @@ function displayPosts() {
 			}
 			//DISPLAY POSTS
 			for (const [key, post] of Object.entries(data)) {
-				allUsers.add(post.createdBy);
 				document.getElementById("PostsContainer").innerHTML += `
 				<div class="flex-down">
 				<div class="PostContainer" id=${key}>
