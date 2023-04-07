@@ -8,6 +8,8 @@ form.addEventListener("submit", (event) => {
 		lastName: document.getElementById("lastName").value,
 		username: document.getElementById("username").value,
 		password: document.getElementById("password").value,
+		profileBio: "No bio yet....",
+		profilePic: "../Assets/BlankProfilePicture.png",
 	};
 	//Check if username is already taken
 	if (
