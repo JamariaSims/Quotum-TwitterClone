@@ -10,6 +10,7 @@ fetch(`${fireBaseURL}currentUser/${jsonEXT}`)
 		currentUser.firstName = data.firstName;
 		currentUser.lastName = data.lastName;
 		currentUser.username = data.username;
+		currentUser.profilePic = data.profilePic;
 		console.log(currentUser);
 		//PROFILE HEADER
 		document.getElementById("ProfileHeader").innerHTML = `
@@ -73,7 +74,7 @@ function displayPosts() {
 				<div class="flex-down">
 				<div class="PostContainer" id=${key}>
 				<img
-					src="../Assets/BlankProfilePicture.png"
+					src="${post.profilePic}"
 					alt="Profile Picture"
 					width="78px"
 					class="PostPic"
@@ -160,6 +161,7 @@ function addPost(event) {
 			firstName: currentUser["firstName"],
 			lastName: currentUser["lastName"],
 			createdBy: currentUser["username"],
+			profilePic: currentUser["profilePic"],
 			timeStamp: currentTime,
 			post: statusCreateBtn.value,
 		}),
