@@ -290,5 +290,8 @@ function updateDisplay() {
 			</div>`;
 			}
 		})
-		.catch((err) => console.log(err));
+		.catch(
+			(err) =>
+				(postsContainer.innerHTML += `<div class="PostContainer"><h2>no posts available</h2></div>`)
+		);
 }
