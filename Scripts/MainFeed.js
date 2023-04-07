@@ -1,67 +1,39 @@
 let fireBaseURL = "https://connectx-1fd24-default-rtdb.firebaseio.com/";
 let jsonEXT = ".json";
-const formData = ["firstName", "lastName", "username", "password"];
-
-//SET CURRENT USER
-let currentUser = {
-	username: "",
-	firstName: "",
-	lastName: "",
-};
+//FETCHING CURRENT USER
+let currentUser = {};
 fetch(`${fireBaseURL}currentUser/${jsonEXT}`)
 	.then((res) => {
 		return res.json();
 	})
 	.then((data) => {
-		currentUser["username"] = data.username;
-		currentUser["firstName"] = data.firstName;
-		currentUser["lastName"] = data.lastName;
-	});
-//LOGOUT
-const logoutBtn = document.getElementById(`Btn-Logout`);
-logoutBtn.addEventListener("click", (event) => {
-	event.preventDefault();
-	fetch(`${fireBaseURL}currentUser/${jsonEXT}`, {
-		method: "PUT",
-		body: JSON.stringify({
-			username: "",
-			firstName: "",
-			lastName: "",
-			password: "",
-			profilePic: "",
-		}),
-	}).then(() => {
-		window.location.replace("/Index.html");
-	});
-});
-//HEADER
-fetch(`${fireBaseURL}currentUser/${jsonEXT}`)
-	.then((res) => {
-		return res.json();
-	})
-	.then((data) => {
+		currentUser.firstName = data.firstName;
+		currentUser.lastName = data.lastName;
+		currentUser.username = data.username;
+		console.log(currentUser);
+		//PROFILE HEADER
 		document.getElementById("ProfileHeader").innerHTML = `
-                <img
-                src="../Assets/BlankProfilePicture.png"
-                alt="Profile Picture"
-                width="200px"
-                />
-                <h1 id="INPUT-name">${data.firstName} ${data.lastName}</h1>
-                <p id="Username">${data.username}</p>
-                <p>
-        ${data.profileBio}
-                </p>
-                <section>
-                <div>
-                        <p>${data.following.length || 0}</p>
-                        <p>Following</p>
-                </div>
-                <div>
-                        <p>${data.followers.length || 0}</p>
-                        <p>Followers</p>
-                </div>
-                </section>
-                                `;
+			<img
+			src=${data.profilePic}
+			alt="Profile Picture"
+			width="200px"
+			/>
+			<h1 id="INPUT-name">${data.firstName} ${data.lastName}</h1>
+			<p id="Username">${data.username}</p>
+			<p>
+		${data.profileBio}
+			</p>
+			<section>
+			<div>
+				<p>${data.following ? data.following.length : 0}</p>
+				<p>Following</p>
+			</div>
+			<div>
+				<p>${data.followers ? data.followers.length : 0}</p>
+				<p>Followers</p>
+			</div>
+			</section>
+					`;
 	});
 //DISPLAY POSTS
 displayPosts();
@@ -221,3 +193,20 @@ function cancelEdit(event) {
 	);
 	currentEditPost.classList.toggle("hide");
 }
+//LOGOUT
+const logoutBtn = document.getElementById(`Btn-Logout`);
+logoutBtn.addEventListener("click", (event) => {
+	event.preventDefault();
+	fetch(`${fireBaseURL}currentUser/${jsonEXT}`, {
+		method: "PUT",
+		body: JSON.stringify({
+			username: "",
+			firstName: "",
+			lastName: "",
+			password: "",
+			profilePic: "",
+		}),
+	}).then(() => {
+		window.location.replace("/Index.html");
+	});
+});
