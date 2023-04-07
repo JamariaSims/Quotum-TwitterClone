@@ -83,5 +83,5 @@ const resetInputValues = () => {
 	document.getElementById("ERROR-Login").classList.remove("hide");
 	setTimeout(() => {
 		return document.getElementById("ERROR-Login").classList.add("hide");
-	}, 3000);
+	}, 4000);
 };

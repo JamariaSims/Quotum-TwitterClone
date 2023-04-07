@@ -40,5 +40,8 @@ form.addEventListener("submit", (event) => {
 const resetInputValues = () => {
 	document.getElementById("username").value = "";
 	document.getElementById("password").value = "";
-	return document.getElementById("ERROR-Login").classList.remove("hide");
+	document.getElementById("ERROR-Login").classList.remove("hide");
+	setTimeout(() => {
+		return document.getElementById("ERROR-Login").classList.add("hide");
+	}, 4000);
 };
